@@ -134,4 +134,5 @@ Change create engine line in your __init__.py and database_setup.py to: engine =
 
 Restart Apache
 1. sudo service apache2 restart
+
 Visit site at http://ec2-13-233-130-123.ap-south-1.compute.amazonaws.com/

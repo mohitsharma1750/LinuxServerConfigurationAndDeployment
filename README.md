@@ -1,4 +1,4 @@
-# LinuxServerConfigurationAndDeployment
+# Linux Server Configuration And Deployment
 Linux Server Configuration Project 
 
 Project Description
@@ -46,10 +46,11 @@ Configure key-based authentication for grader user
 Disable ssh login for root user
 1. Run sudo nano /etc/ssh/sshd_config
 2. Change PermitRootLogin without-password line to PermitRootLogin no
-Restart ssh with sudo service ssh restart
-Now you are only able to login using ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@13.233.130.123
-Note : Check the entries first , You might not need to disable in Lightsail Server , it has already
-been disabled.
+
+    Restart ssh with sudo service ssh restart
+    Now you are only able to login using ssh -i ~/.ssh/udacity_key.rsa -p 2200 grader@13.233.130.123
+    Note : Check the entries first , You might not need to disable in Lightsail Server , it has already
+    been disabled.
 
 Install Apache
 
@@ -66,10 +67,11 @@ Install mod_wsgi
 7. cd /catalog
 8. Clone your project from github
 9. Create a catalog.wsgi file, then add this inside:
-import sys
-import logging
-logging.basicConfig(stream=sys.stderr)
-sys.path.insert(0, "/var/www/catalog/")
+   
+    import sys
+    import logging
+    logging.basicConfig(stream=sys.stderr)
+    sys.path.insert(0, "/var/www/catalog/")
 
 from catalog import app as application
 application.secret_key = 'supersecretkey'
@@ -96,24 +98,25 @@ Configure and enable a new virtual host
 1. Run this: sudo nano /etc/apache2/sites-available/catalog.conf
 
 Paste this code:
-<VirtualHost *:80>
-    ServerName 13.233.130.123
-    WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
-    WSGIProcessGroup catalog
-    WSGIScriptAlias / /var/www/catalog/catalog.wsgi
-    <Directory /var/www/catalog/catalog/>
-        Order allow,deny
-        Allow from all
-    </Directory>
-    Alias /static /var/www/catalog/catalog/static
-    <Directory /var/www/catalog/catalog/static/>
-        Order allow,deny
-        Allow from all
-    </Directory>
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    LogLevel warn
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
+
+    <VirtualHost *:80>
+        ServerName 13.233.130.123
+        WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
+        WSGIProcessGroup catalog
+        WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+        <Directory /var/www/catalog/catalog/>
+            Order allow,deny
+            Allow from all
+        </Directory>
+        Alias /static /var/www/catalog/catalog/static
+        <Directory /var/www/catalog/catalog/static/>
+            Order allow,deny
+            Allow from all
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        LogLevel warn
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+    </VirtualHost>
 
 2. Enable the virtual host sudo a2ensite catalog
 

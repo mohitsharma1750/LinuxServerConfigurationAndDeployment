@@ -12,8 +12,6 @@ Application URL: http://ec2-13-233-130-123.ap-south-1.compute.amazonaws.com/
 
 
 Create new user named grader and give it the permission to sudo
-
-Steps
 1. SSH into the server through ssh -i ~/.ssh/key.peb ubuntu@13.233.130.123
 2. Run $ sudo adduser grader to create a new user named grader
 3. Create a new file in the sudoers directory with sudo nano /etc/sudoers.d/grader
@@ -29,8 +27,7 @@ Change SSH port from 22 to 2200
 2. Change the port from 22 to 2200
 3. Confirm by running ssh -i ~/.ssh/key.peb -p 2200 root@13.233.130.123
 
-Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
-Before doing this step make sure that in Lightsail server firewall you have enable 2200 port. Otherwise you will be locked out of your machine. 
+Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123). Before doing this step make sure that in Lightsail server firewall you have enable 2200 port. Otherwise you will be locked out of your machine. 
 1. sudo ufw allow 2200/tcp
 2. sudo ufw allow 80/tcp
 3. sudo ufw allow 123/udp
@@ -68,14 +65,13 @@ Install mod_wsgi
 8. Clone your project from github
 9. Create a catalog.wsgi file, then add this inside:
    
-    import sys
-    import logging
-    logging.basicConfig(stream=sys.stderr)
-    sys.path.insert(0, "/var/www/catalog/")
-
-from catalog import app as application
-application.secret_key = 'supersecretkey'
-Rename application.py to init.py mv application.py __init__.py
+        import sys
+        import logging
+        logging.basicConfig(stream=sys.stderr)
+        sys.path.insert(0, "/var/www/catalog/")
+        from catalog import app as application
+        application.secret_key = 'supersecretkey'
+        Rename application.py to init.py mv application.py __init__.py
 
 
 Install virtual environment

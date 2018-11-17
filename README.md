@@ -1,7 +1,7 @@
 # Linux Server Configuration And Deployment
+
 Linux Server Configuration Project 
 
-Project Description
 Create an instance of Basic Unix based OS from lightsail AWS server and deploy your Item catalog Project into the server. It includes installing updates, securing it from a number of attack vectors and installing/configuring web and database servers.
 
 IP address: 13.233.130.123

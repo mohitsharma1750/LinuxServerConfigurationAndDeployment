@@ -136,3 +136,19 @@ Restart Apache
 1. sudo service apache2 restart
 
 Visit site at http://ec2-13-233-130-123.ap-south-1.compute.amazonaws.com/
+
+
+# Resources Used 
+
+Basic MOD WSGI Application Setup :
+
+https://modwsgi.readthedocs.io/en/develop/user-guides/quick-configuration-guide.html 
+
+Securing your Server :
+
+https://medium.com/viithiisys/10-steps-to-secure-linux-server-for-production-environment-a135109a57c5
+
+Install and Configure Postgressql
+
+https://www.godaddy.com/garage/how-to-install-postgresql-on-ubuntu-14-04/ 
+
